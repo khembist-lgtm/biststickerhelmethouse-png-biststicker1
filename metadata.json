@@ -1,0 +1,6 @@
+{
+  "name": "Bist Sticker and Accessories",
+  "description": "Premium motorcycle stickers, helmets, and accessories store in Attariya, Kailali, Nepal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

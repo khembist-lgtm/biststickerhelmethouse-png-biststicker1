@@ -1,0 +1,124 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Bike sticker, helmet, or motorcycle accessory item.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "categoryId": { "type": "string", "maxLength": 128 },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "description": { "type": "string", "maxLength": 2000 },
+        "images": { "type": "array" },
+        "features": { "type": "array" },
+        "isFeatured": { "type": "boolean" },
+        "isNew": { "type": "boolean" },
+        "isBestSeller": { "type": "boolean" },
+        "stock": { "type": "number" },
+        "sku": { "type": "string", "maxLength": 128 },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" }
+      },
+      "required": ["id", "name", "categoryId", "price"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Product category",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "slug": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "image": { "type": "string", "maxLength": 1000 }
+      },
+      "required": ["id", "name", "slug"]
+    },
+    "HeroSlide": {
+      "title": "HeroSlide",
+      "description": "Banner slider content for main page header",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "smallText": { "type": "string", "maxLength": 200 },
+        "title": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "image": { "type": "string", "maxLength": 1000 },
+        "primaryBtnText": { "type": "string", "maxLength": 100 },
+        "primaryBtnLink": { "type": "string", "maxLength": 500 },
+        "secondaryBtnText": { "type": "string", "maxLength": 100 },
+        "secondaryBtnLink": { "type": "string", "maxLength": 500 },
+        "order": { "type": "number" },
+        "isActive": { "type": "boolean" }
+      },
+      "required": ["id", "title"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase inquiry order record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "customerName": { "type": "string", "maxLength": 200 },
+        "customerPhone": { "type": "string", "maxLength": 50 },
+        "customerAddress": { "type": "string", "maxLength": 500 },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "items": { "type": "array" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["id", "customerName", "customerPhone", "items", "totalAmount"]
+    },
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "Global shop metadata, phone numbers, contact info, social links",
+      "type": "object",
+      "properties": {
+        "shopName": { "type": "string", "maxLength": 200 },
+        "tagline": { "type": "string", "maxLength": 300 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "whatsappNumber": { "type": "string", "maxLength": 50 },
+        "whatsappDisplay": { "type": "string", "maxLength": 50 },
+        "email": { "type": "string", "maxLength": 200 },
+        "address": { "type": "string", "maxLength": 500 },
+        "city": { "type": "string", "maxLength": 100 },
+        "district": { "type": "string", "maxLength": 100 },
+        "country": { "type": "string", "maxLength": 100 },
+        "openingHours": { "type": "string", "maxLength": 300 },
+        "facebookUrl": { "type": "string", "maxLength": 500 },
+        "tiktokUrl": { "type": "string", "maxLength": 500 },
+        "instagramUrl": { "type": "string", "maxLength": 500 },
+        "googleMapsEmbedUrl": { "type": "string", "maxLength": 1000 },
+        "logoUrl": { "type": "string", "maxLength": 1000 },
+        "aboutText": { "type": "string", "maxLength": 2000 },
+        "aboutImage": { "type": "string", "maxLength": 1000 },
+        "footerText": { "type": "string", "maxLength": 1000 }
+      }
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Catalog products collection"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Product categories collection"
+    },
+    "/heroSlides/{slideId}": {
+      "schema": "HeroSlide",
+      "description": "Hero slider items collection"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Customer order entries"
+    },
+    "/settings/{settingId}": {
+      "schema": "SiteSettings",
+      "description": "Site global configuration settings"
+    }
+  }
+}
